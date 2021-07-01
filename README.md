@@ -50,3 +50,8 @@ To run the solution, you need to type in the terminal or the command line:
 
 ## How to use it?
 Open the web browser [http://localhost:5000/](http://localhost:5000/)
+
+## To do list
+* Tests
+* Pull database credentials from the repository
+* Check if tables already exist or remove tables before initial load
