@@ -1,0 +1,35 @@
+<html>
+    {% include "snippets/header.html" %}
+    <body>
+        {% include "snippets/home.html" %}
+        <h3>Question {{ question }}</h3>
+        <h2>When was done first and last rate included in data set and what was the rated movie title?</h2>
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Timestamp</th>
+            </tr>
+            <tr>
+                <th colspan="3">Newest</th>
+            </tr>
+            {% for row in newest %}
+            <tr>
+                <th>{{ loop.index }}</th>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] | ctime }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="3">Oldest</th>
+            </tr>
+            {% for row in oldest %}
+            <tr>
+                <th>{{ loop.index }}</th>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] | ctime }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

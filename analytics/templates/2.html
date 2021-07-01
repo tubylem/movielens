@@ -1,0 +1,22 @@
+<html>
+    {% include "snippets/header.html" %}
+    <body>
+        {% include "snippets/home.html" %}
+        <h3>Question {{ question }}</h3>
+        <h2>What is the most common genre of movie?</h2>
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Genre</th>
+                <th>Count</th>
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <th>{{ loop.index }}</th>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
