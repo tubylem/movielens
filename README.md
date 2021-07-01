@@ -1,9 +1,9 @@
 # Data Engineer Aptitude Test
 
 ## Motivation
-The solution was made for the purposes of recruitment.
+The solution was made for the purpose of recruitment.
 
-## Description of the problem
+## Description of the task
 The task is to simulate situation when you run some data transformations based on data stored in different environment than your transformation script runs.
 
 ### To achieve this please follow below steps:
@@ -17,27 +17,31 @@ The task is to simulate situation when you run some data transformations based o
 The solution contains three containers:
 
 1. The relational database to store data
-2. The process to load data from CSV files to database
+2. The process to load data from `CSV` files to database
 3. The web application to share outputs
 
 ### Database (db)
-I have chosen the opensource PostgresSQL database, because to the authors of the project claims it is "The World's Most Advanced Open Source Relational Database", but every relational database should be sufficient for this task.
+I have chosen the open-source `PostgresSQL` database, because the authors of the project claim it is "The World's Most Advanced Open Source Relational Database", but every relational database should be sufficient for this task.
 
-### Init load (db-load)
+### Database initial load (db-load)
 The initial process of loading data has been created in a separate container, which runs when the database is ready for accepting new connections. 
-The Python script was used to read data from CSV files and put all records to the database.
 
-* For reading data from CSV files the pandas library was used.
-* For writing data to the database the sqlalchemy library was used.
+The `Python` script was used to read data from `CSV` files and put all records to the database.
+
+* For reading data from CSV files the `pandas` library was used.
+* For writing data to the database the `sqlalchemy` library was used.
 
 It was not necessary to explicitly specify the database structure, but of course in the production solution it is most advisable.
 
 ### Sharing the results (analytics)
 A Flask application has been created to answer the questions asked.
+
 The answers are generated in real time and some of them are parametrized.
 
+To access the database `PostgresSQL` the `psycopg2` library was used.
+
 ## Prerequisites
-* Access to the Internet
+* The access to the Internet is required to pull `docker` images and download the movielens `CSV` files. 
 * Docker engine
 * Docker compose
 
@@ -51,7 +55,12 @@ To run the solution, you need to type in the terminal or the command line:
 ## How to use it?
 Open the web browser [http://localhost:5000/](http://localhost:5000/)
 
+All questions should be shown. 
+
+If you want to find out the answer, click on the specific question.
+
 ## To do list
-* Tests
+* Unit tests
 * Pull database credentials from the repository
 * Check if tables already exist or remove tables before initial load
+* Specify correct primary keys in tables
